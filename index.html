@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>VIL: Zero-Shot Exocentric View-Invariant Imitation Learning</title>
+  <meta name="description"
+    content="Project page for Zero-Shot Exocentric View-Invariant Imitation Learning (VIL): Bridging Handheld Gripper and Arbitrary Exocentric Views.">
+  <meta name="keywords" content="Robotics, Imitation Learning, View Invariance, Manipulation, VIL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=24">
+</head>
+
+<body>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="paper-title">VIL: Zero-Shot Exocentric<br>View-Invariant Imitation Learning</h1>
+
+      <p class="authors">
+        Boyan Li<sup>1</sup>, Peilin Meng<sup>1</sup>, Chang Liu<sup>1</sup>,
+        Yulin Chen<sup>1</sup>, Qi Zhou<sup>1</sup>, Youyi Bi<sup>1,&dagger;</sup>
+      </p>
+      <p class="affiliation"><sup>1</sup>Shanghai Jiao Tong University</p>
+      <p class="venue">IEEE International Conference on Robotics and Automation (ICRA) 2026</p>
+      <p class="hero-note">&dagger; Corresponding author</p>
+
+      <nav class="links" aria-label="Paper resources">
+        <a class="btn" href="https://rasevents.org/uploads/documents/pdfviewer/af/ed/216683-1772.pdf"
+          target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 1h5l3 3v11H4z" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <path d="M9 1v3h3" fill="none" stroke="currentColor" stroke-width="1.4" />
+          </svg>Paper
+        </a>
+        <a class="btn" href="https://rasevents.org/uploads/documents/pdfviewer/4e/d0/213968-posterfinala4.pdf"
+          target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="2.2" y="1.8" width="11.6" height="12.4" rx="1.2" fill="none" stroke="currentColor"
+              stroke-width="1.4" />
+            <path d="M4.6 9.6 6.8 7l2 2.2L10.6 8l1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.4"
+              stroke-linejoin="round" />
+            <circle cx="6" cy="4.9" r="1" fill="currentColor" />
+          </svg>Poster
+        </a>
+        <a class="btn" href="https://github.com/liboyan233/VIL" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 .8a7.2 7.2 0 0 0-2.28 14c.36.07.49-.15.49-.34v-1.2c-2 .44-2.43-.96-2.43-.96-.33-.84-.8-1.06-.8-1.06-.66-.45.05-.44.05-.44.73.05 1.11.75 1.11.75.65 1.11 1.7.79 2.11.6.07-.47.25-.79.46-.97-1.6-.18-3.28-.8-3.28-3.56 0-.79.28-1.43.74-1.93-.07-.18-.32-.91.07-1.9 0 0 .6-.19 1.98.74a6.9 6.9 0 0 1 3.6 0c1.38-.93 1.98-.74 1.98-.74.39.99.14 1.72.07 1.9.46.5.74 1.14.74 1.93 0 2.77-1.69 3.38-3.29 3.56.26.22.49.66.49 1.33v1.97c0 .19.13.42.5.34A7.2 7.2 0 0 0 8 .8z"
+              fill="currentColor" />
+          </svg>Code
+        </a>
+        <a class="btn" href="#citation">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M6 4C4 5 3 6.6 3 8.7V12h4V8H5.2C5.3 6.6 5.6 5.7 6.6 5zM13 4c-2 1-3 2.6-3 4.7V12h4V8h-1.8c.1-1.4.4-2.3 1.4-3z"
+              fill="currentColor" />
+          </svg>BibTeX
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== TEASER VIDEO ============================== -->
+  <section class="section section-tight" id="teaser">
+    <div class="container">
+      <div class="video-frame">
+        <video id="teaser-video" controls preload="metadata" playsinline poster="video/teaser_poster.jpg">
+          <source src="video/teaser.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== ABSTRACT ============================== -->
+  <section class="section" id="abstract">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <div class="prose">
+        <p>
+          Recent advances in robot learning have motivated integrated pipelines that combine hardware for data
+          collection with imitation learning algorithms. Existing data collection methods like leader-follower, VR/AR,
+          and exoskeletons rely on costly hardware and exhibit limited scalability, while imitation learning algorithms
+          built on them remain highly sensitive to viewpoint shifts, further constraining generalizability.
+          Hand-held grippers provide a low-cost, robot-agnostic alternative, but prior systems bypass exocentric view
+          alignment by relying solely on wrist-mounted cameras, resulting in narrowed observation and reduced policy
+          robustness.
+        </p>
+      </div>
+
+      <figure class="figure-frame is-inline">
+        <img src="figure/Fig1.png" alt="Overview of VIL: handheld gripper prototype, egocentric-exocentric alignment,
+          and stable performance under dynamic views.">
+      </figure>
+
+      <div class="prose">
+        <p>
+          We propose <b>VIL</b>, a framework pairing a customized handheld gripper with a zero-shot, view-invariant
+          imitation learning algorithm, bridging the handheld gripper with arbitrary exocentric views. Our approach
+          employs adapters for appearance alignment and a hybrid encoder design to extract viewpoint-agnostic
+          representations for an ACT-based policy, enabling robust execution across diverse perspectives. We further
+          optimize the data collection pipeline and validate the system in both simulation and real-world tasks.
+          Experiments show that VIL achieves stable performance under viewpoint shifts, challenging low-horizon
+          scenarios, and dynamic perspectives, outperforming SOTA methods and demonstrating a scalable pipeline for
+          manipulator-agnostic, view-invariant policy learning.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DATA COLLECTION ============================== -->
+  <section class="section" id="data">
+    <div class="container">
+      <h2 class="section-title">Data Collection Pipeline</h2>
+
+      <figure class="figure-frame is-medium">
+        <img src="figure/Fig2.png"
+          alt="Training data pipeline using RealSense, SLAM, ArUco markers, and gripper width sensing.">
+      </figure>
+
+      <div class="prose">
+        <p>
+          Our handheld gripper pipeline is inspired by UMI, but follows the template of the Robotiq 2F-85, a mature
+          universal gripper that is widely adopted in robotics research. This choice facilitates compatibility with
+          existing large-scale datasets, such as RoboSet and DROID, thereby enabling future pretraining or co-training
+          with policies developed on the same gripper hardware.
+        </p>
+        <p>
+          We embed an infrared sensor in the handle to monitor trigger motion, which is then mapped to gripper width.
+          Global scene context comes from a third-person camera, an Intel RealSense D435i, which removes the need for
+          the fisheye optics earlier handheld rigs depend on. End-effector pose is recovered from two complementary
+          sources: SLAM tracks reliably while the gripper is still far from the target, and the ArUco marker is more
+          accurate through the final approach, so together they cover the full trajectory.
+        </p>
+      </div>
+
+      <div class="media-grid" id="collection-demos">
+        <div class="media-item demo-card" data-task="task1" data-count="5">
+          <p class="media-label">Unplug the Plug</p>
+          <div class="pip-wrapper">
+            <video class="pip-main" autoplay muted loop playsinline
+              src="video/task1/ep1/side.mp4"></video>
+            <video class="pip-inset" autoplay muted loop playsinline
+              src="video/task1/ep1/wrist.mp4"></video>
+          </div>
+          <div class="pager-row">
+            <div class="gallery-pager">
+              <button type="button" class="pager-btn" data-step="-1"
+                aria-label="Previous Unplug the Plug episode">&#9664;</button>
+              <span class="pager-count">1 / 5</span>
+              <button type="button" class="pager-btn" data-step="1"
+                aria-label="Next Unplug the Plug episode">&#9654;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-item demo-card" data-task="task2" data-count="5">
+          <p class="media-label">Store Cube</p>
+          <div class="pip-wrapper">
+            <video class="pip-main" autoplay muted loop playsinline
+              src="video/task2/ep1/side.mp4"></video>
+            <video class="pip-inset" autoplay muted loop playsinline
+              src="video/task2/ep1/wrist.mp4"></video>
+          </div>
+          <div class="pager-row">
+            <div class="gallery-pager">
+              <button type="button" class="pager-btn" data-step="-1"
+                aria-label="Previous Store Cube episode">&#9664;</button>
+              <span class="pager-count">1 / 5</span>
+              <button type="button" class="pager-btn" data-step="1"
+                aria-label="Next Store Cube episode">&#9654;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-item demo-card" data-task="task3" data-count="5">
+          <p class="media-label">Arrange Cup</p>
+          <div class="pip-wrapper">
+            <video class="pip-main" autoplay muted loop playsinline
+              src="video/task3/ep1/side.mp4"></video>
+            <video class="pip-inset" autoplay muted loop playsinline
+              src="video/task3/ep1/wrist.mp4"></video>
+          </div>
+          <div class="pager-row">
+            <div class="gallery-pager">
+              <button type="button" class="pager-btn" data-step="-1"
+                aria-label="Previous Arrange Cup episode">&#9664;</button>
+              <span class="pager-count">1 / 5</span>
+              <button type="button" class="pager-btn" data-step="1"
+                aria-label="Next Arrange Cup episode">&#9654;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== HARDWARE ============================== -->
+  <section class="section" id="hardware">
+    <div class="container">
+      <h2 class="section-title">Handheld Gripper</h2>
+
+      <div class="theater" id="cad">
+        <div class="theater-bar">
+          <span class="bar-label">Parts</span>
+          <div class="cad-chips" id="cad-parts"></div>
+          <button type="button" class="transport-btn" id="cad-spin"
+            aria-label="Pause rotation">&#10074;&#10074;</button>
+        </div>
+
+        <div class="cad-stage">
+          <canvas id="cad-canvas"></canvas>
+          <p class="cad-status" id="cad-status">Loading model &hellip;</p>
+          <span class="cad-hint">Drag to orbit &middot; scroll to zoom</span>
+        </div>
+
+        <p class="cad-caption" id="cad-caption"></p>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://drive.google.com/drive/folders/15jRhqiBxu612BTisAuTE6C8DEEFC9AZC"
+          target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          CAD files
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== METHOD ============================== -->
+  <section class="section" id="method">
+    <div class="container">
+      <h2 class="section-title">View-Invariant Algorithm</h2>
+
+      <figure class="figure-frame">
+        <img src="figure/Fig3.png"
+          alt="Method overview showing side-view alignment, view-agnostic encoder, and action chunking.">
+      </figure>
+
+      <div class="prose">
+        <p>
+          VIL builds on ACT, which already handles multi-view input and emits long-horizon action chunks; what VIL adds
+          is the machinery that keeps those inputs usable when the camera moves. Exocentric observations go first
+          through a segment-inpainting module that strips out the manipulator and the human operator, closing the
+          appearance gap between a demonstration collected by hand and a rollout executed by a robot arm. The aligned
+          exocentric view and the egocentric view then pass through a hybrid feature encoder &mdash; each embedded by the
+          backbone suited to it &mdash; to yield viewpoint-agnostic representations, which the ACT block turns into
+          view-invariant actions.
+        </p>
+      </div>
+
+      <ol class="takeaways">
+        <li>
+          <h3>Viewpoint-robust feature encoder</h3>
+          <p>
+            Comparing backbones systematically, we found the Swin Transformer generalizes to unseen viewpoints far
+            better than ResNet or ViT. Its relative positional bias and shifted-window attention loosen the tie to
+            absolute pixel coordinates, so it reasons about object state within a shifted scene rather than a fixed
+            layout, and its hierarchical stages fold local cues into global context. Swin-T is weaker on close-range
+            fine detail, so the egocentric view keeps a ResNet encoder &mdash; each view gets the backbone it suits.
+          </p>
+        </li>
+        <li>
+          <h3>Inpainting-based visual alignment</h3>
+          <p>
+            Demonstrations are collected with a human hand on the gripper; rollouts are executed with a robot arm. The
+            gripper itself carries the task signal, while the manipulator around it carries almost none and can act as
+            a distractor. A gripper-centric module segments every non-gripper region and inpaints it back to
+            background, so the exocentric view looks the same at training and at deployment &mdash; and the same policy
+            transfers across manipulators.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================== EXPERIMENTS ============================== -->
+  <section class="section" id="experiments">
+    <div class="container">
+      <h2 class="section-title">Experiments</h2>
+
+      <h3 class="block-title">Simulation</h3>
+      <div class="prose">
+        <p>
+          We adopt two simulation tasks introduced in ACT, cube transfer and bimanual insertion. For each task, we
+          collect 50 demonstrations with rendered wrist and side views for training.
+        </p>
+      </div>
+
+      <div class="media-stack">
+        <div class="media-item">
+          <video autoplay muted loop playsinline>
+            <source src="video/sim/transfer.mp4?v=2" type="video/mp4">
+          </video>
+          <p class="media-label">Cube Transfer</p>
+        </div>
+        <div class="media-item">
+          <video autoplay muted loop playsinline>
+            <source src="video/sim/insertion.mp4?v=2" type="video/mp4">
+          </video>
+          <p class="media-label">Bimanual Insertion</p>
+        </div>
+      </div>
+
+      <div class="prose prose-lead">
+        <p>During testing, policies are evaluated under three progressively challenging view conditions:</p>
+      </div>
+
+      <ol class="view-steps">
+        <li>
+          <img src="figure/left.png" alt="The exocentric camera at its training position">
+          <div class="view-body">
+            <span class="view-meter" aria-hidden="true"><i class="is-on"></i><i></i><i></i></span>
+            <h4>Same view</h4>
+          </div>
+        </li>
+        <li>
+          <img src="figure/right.png" alt="The exocentric camera moved to the mirrored side">
+          <div class="view-body">
+            <span class="view-meter" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i></i></span>
+            <h4>Symmetric view</h4>
+          </div>
+        </li>
+        <li>
+          <img src="figure/top.png" alt="A top-down camera angle never seen in training">
+          <div class="view-body">
+            <span class="view-meter" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i></span>
+            <h4>Novel view</h4>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="block-title">Real-World</h3>
+      <div class="prose">
+        <p>
+          We conduct three real-world tasks to verify that our proposed VIL pipeline with added exocentric views
+          generates a view-agnostic, functional and stable policy in the real world. We use our own designed handheld
+          gripper for data collection, select 50 valid demonstrations each for training, and use a JAKA-Zu3 robot arm as
+          the manipulator during inference.
+        </p>
+      </div>
+
+      <ol class="task-cards">
+        <li>
+          <span class="task-tag">Novel viewpoint</span>
+          <h3>Unplug the Plug</h3>
+          <p>
+            This task evaluates the policy's ability to generalize to novel exocentric viewpoints in a zero-shot manner.
+            The robot must precisely unplug a plug from either the left or right socket port, where small grasping errors can cause the plug to jam.
+          </p>
+        </li>
+        <li>
+          <span class="task-tag">Exocentric View Utilization</span>
+          <h3>Store Cube</h3>
+          <p>
+            This task evaluates whether the policy can effectively utilize exocentric observations when the egocentric view is insufficient to determine the task state.
+            The robot must locate a cube, place it into a drawer, and close the drawer, requiring global visual information to disambiguate the cube's location and task progression.
+          </p>
+        </li>
+        <li>
+          <span class="task-tag">Dynamic Viewpoint Stability</span>
+          <h3>Arrange Cup</h3>
+          <p>
+            This task evaluates the policy's ability to maintain stable execution under continuously changing exocentric viewpoints.
+            The robot must transfer a cup from the desk to a coaster while a human-held camera continuously shifts viewpoint,
+            with a ball placed on the desk to expose action vibrations and instability.
+          </p>
+        </li>
+      </ol>
+
+      <div class="theater" id="realworld">
+        <div class="theater-bar">
+          <span class="bar-label">Task</span>
+          <div class="segmented" id="rw-task-picker" role="tablist" aria-label="Real-world task">
+            <button type="button" class="is-active" data-task="task1" role="tab"
+              aria-selected="true">Unplug the Plug</button>
+            <button type="button" data-task="task2" role="tab" aria-selected="false">Store Cube</button>
+            <button type="button" data-task="task3" role="tab" aria-selected="false">Arrange Cup</button>
+          </div>
+        </div>
+
+        <div class="theater-panes">
+          <div class="pane">
+            <span class="pane-head">Policy input &mdash; side + wrist</span>
+            <div class="pane-stage">
+              <video class="pip-main" id="rw-side" autoplay muted loop playsinline></video>
+              <video class="pip-inset" id="rw-wrist" autoplay muted loop playsinline></video>
+            </div>
+          </div>
+
+          <div class="pane">
+            <span class="pane-head">External view</span>
+            <div class="pane-stage">
+              <video id="rw-external" autoplay muted loop playsinline></video>
+            </div>
+          </div>
+        </div>
+
+        <div class="theater-transport">
+          <button type="button" class="transport-btn" id="rw-play" aria-label="Pause">&#10074;&#10074;</button>
+          <input type="range" class="transport-seek" id="rw-seek" min="0" max="1000" step="1" value="0"
+            aria-label="Seek">
+          <span class="transport-time" id="rw-time">0:00 / 0:00</span>
+          <button type="button" class="transport-btn transport-speed" id="rw-speed"
+            aria-label="Playback speed">1&times;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PERFORMANCE ============================== -->
+  <section class="section" id="performance">
+    <div class="container">
+      <h2 class="section-title">Performance</h2>
+
+      <div class="chart-block" id="results">
+        <div class="chart-bar">
+          <div class="segmented" id="domain-picker" role="tablist" aria-label="Evaluation domain">
+            <button type="button" class="is-active" data-domain="sim" role="tab"
+              aria-selected="true">Simulation</button>
+            <button type="button" data-domain="real" role="tab" aria-selected="false">Real-World</button>
+          </div>
+          <div class="segmented" id="task-picker" role="tablist" aria-label="Task"></div>
+        </div>
+        <div class="legend" id="chart-legend"></div>
+        <div class="chart" id="results-chart"></div>
+        <div class="table-wrap" id="results-table" hidden></div>
+        <p class="caption" id="chart-note"></p>
+      </div>
+
+      <div class="prose" style="margin-top: 2rem;">
+        <p>
+          In simulation, VIL matches the baselines under aligned views and separates from them as soon as the exocentric camera moves.
+          ACT achieves 93.3% on Transfer Cube and 50.0% on Insertion when the evaluation view matches training, but drops to 3.3% and 1.7% under a novel viewpoint.
+          Diffusion Policy follows the same trend, dropping from 76.7% to 18.3% on Transfer Cube and from 43.3% to 13.3% on Insertion.
+          In contrast, VIL remains nearly unchanged, improving from 91.7% to 93.3% on Transfer Cube and decreasing only from 56.7% to 53.3% on Insertion.
+          The encoder ablations support the hybrid design. Under novel viewpoints, Swin-T alone achieves 76.7% / 33.3% on Transfer Cube / Insertion,
+          compared with 23.3% / 20.0% for ResNet-50 and 1.7% / 5.0% for ViT-S. The full hybrid encoder reaches 93.3% / 53.3%,
+          These results support using ResNet for fine-grained egocentric details and Swin-T for view-invariant exocentric features.
+        </p>
+        <p>
+          The real-world results carry the same pattern onto handheld-gripper data. On the plug task VIL holds 80%
+          when the evaluation viewpoint differs from training, where ACT falls to 20%. On the long-horizon cube task,
+          removing the exocentric view does not merely degrade the policy &mdash; it degenerates into a shortcut that
+          skips the pick entirely and only learns to close the drawer, scoring 0/30. And under a continuously moving
+          hand-held camera, VIL still completes the cup task 7 times out of 10.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== BIBTEX ============================== -->
+  <section class="section" id="citation">
+    <div class="container">
+      <div class="bibtex-head">
+        <h2 class="section-title">BibTeX</h2>
+        <button class="copy-button" data-copy-target="bibtex" type="button">Copy</button>
+      </div>
+      <pre><code id="bibtex">@inproceedings{li2026vil,
+  title     = {Zero-Shot Exocentric View-Invariant Imitation Learning (VIL): Bridging Handheld Gripper and Arbitrary Exocentric Views},
+  author    = {Li, Boyan and Meng, Peilin and Liu, Chang and Chen, YuLin and Zhou, Qi and Bi, Youyi},
+  booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <script src="script.js?v=13"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="cad.js?v=3"></script>
+</body>
+
+</html>

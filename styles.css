@@ -1,0 +1,1206 @@
+/* ====================================================================
+   VIL -- project page.
+
+   Same system as the JAMB page: black text on white, and where a colour
+   is needed -- section titles, buttons, the table header -- it is navy
+   #00274C or maize #FFCB05 and nothing else.
+   ==================================================================== */
+
+:root {
+  --navy: #00274c;
+  --maize: #ffcb05;
+
+  --ink: #111111;
+  --ink-2: #3d3d3d;
+  --ink-3: #767676;
+  --rule: #d9d9d9;
+  --rule-2: #ededed;
+  --ground: #ffffff;
+
+  --panel: #00274c;
+  --panel-2: #013663;
+  --panel-rule: rgba(255, 255, 255, 0.16);
+  --panel-ink: #eef3f8;
+  --panel-ink-2: #a4bcd4;
+
+  --radius: 8px;
+  --page: 1060px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 2px;
+}
+
+.container {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.section-tight {
+  padding: 1.2rem 0 1.8rem;
+}
+
+.section-title {
+  font-size: 1.85rem;
+  color: var(--navy);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid var(--maize);
+  display: inline-block;
+}
+
+.block-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 4rem 0 1rem;
+}
+
+.block-title:first-of-type {
+  margin-top: 1.2rem;
+}
+
+.sub-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 2rem 0 0.7rem;
+}
+
+.prose {
+  color: var(--ink-2);
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* a lead-in line that introduces the figure row under it, with the clip row
+   above: without this it reads as a caption on the clips instead */
+.prose-lead {
+  margin-top: 3.4rem;
+}
+
+.prose ul {
+  margin: 0 0 1em;
+  padding-left: 1.15rem;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.caption {
+  margin: 1rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-3);
+}
+
+.block-note {
+  color: var(--ink-3);
+  font-size: 0.92rem;
+  margin: -0.3rem 0 1rem;
+}
+
+/* ---------------------------------------------------------------- hero */
+
+.hero {
+  padding: 3rem 0 2.2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+.paper-title {
+  font-size: 2.9rem;
+  font-weight: 600;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.authors {
+  margin: 1.4rem 0 0.2rem;
+  font-size: 1.22rem;
+}
+
+.authors sup {
+  font-size: 0.72em;
+}
+
+.affiliation {
+  margin: 0 0 0.25rem;
+  font-size: 1.02rem;
+  color: var(--ink-2);
+}
+
+.venue {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--ink-3);
+}
+
+.hero-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.btn:hover {
+  background: var(--navy);
+  color: var(--maize);
+}
+
+/* ---------------------------------------------------------------- media */
+
+.video-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+}
+
+.video-frame video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.figure-frame {
+  margin: 0 0 1.6rem;
+}
+
+.figure-frame img {
+  width: 100%;
+}
+
+/* a figure sitting between two prose blocks needs air on both sides */
+.figure-frame.is-inline {
+  margin: 2rem 0;
+}
+
+.figure-frame.is-medium img {
+  width: 72%;
+  margin: 0 auto;
+}
+
+/* a row of equally sized clips or stills; collapses to one column on a phone */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 0;
+}
+
+/* the two simulation clips are wide side-by-side renders, so they stack */
+.media-stack {
+  display: grid;
+  gap: 1.4rem;
+  margin: 1.2rem auto 0;
+  max-width: 760px;
+}
+
+.media-item {
+  min-width: 0;
+}
+
+.media-item > img,
+.media-item > video {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+}
+
+.media-label {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+}
+
+/* on a demo card the task name heads the clip, so the gap flips to the bottom */
+.demo-card .media-label {
+  margin: 0 0 0.55rem;
+}
+
+/* ---------------------------------------------- picture-in-picture clips */
+
+.pip-wrapper {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+}
+
+.pip-main {
+  width: 100%;
+  height: auto;
+}
+
+.pip-inset {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+  width: 30%;
+  border-radius: 5px;
+  border: 2px solid var(--maize);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  object-fit: cover;
+  z-index: 2;
+}
+
+.table-note {
+  margin-top: 0.9rem;
+}
+
+/* ---------------------------------------------------------------- controls */
+
+.segmented {
+  display: inline-flex;
+  border: 1.5px solid var(--navy);
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.segmented button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--navy);
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.segmented button + button {
+  border-left: 1.5px solid var(--navy);
+}
+
+.segmented button:hover:not(.is-active) {
+  background: rgba(0, 39, 76, 0.07);
+}
+
+.segmented button.is-active {
+  background: var(--navy);
+  color: var(--maize);
+}
+
+/* On the navy theater panel a white pill reads as a hole punched in the panel
+   and the navy active state vanishes into it, so the pair inverts there. */
+.theater .segmented {
+  background: transparent;
+  border-color: var(--maize);
+}
+
+.theater .segmented button {
+  color: var(--panel-ink);
+  line-height: 1.2;
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
+}
+
+.theater .segmented button + button {
+  border-left-color: var(--maize);
+}
+
+.theater .segmented button:hover:not(.is-active) {
+  background: rgba(255, 203, 5, 0.16);
+}
+
+.theater .segmented button.is-active {
+  background: var(--maize);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* episode pager: [< 1/5 >] */
+.gallery-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  border: 1.5px solid var(--navy);
+  border-radius: 999px;
+  padding: 0.08rem;
+  background: #fff;
+}
+
+.pager-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pager-btn:hover:not(:disabled) {
+  background: var(--maize);
+}
+
+.pager-btn:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.pager-count {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.28rem;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.theater-transport {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.6rem;
+}
+
+.transport-seek {
+  flex: 1;
+  min-width: 0;
+}
+
+.transport-time {
+  font-size: 0.76rem;
+  color: var(--panel-ink-2);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+  min-width: 5.4rem;
+  text-align: right;
+}
+
+.transport-speed {
+  min-width: 3.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.28);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--maize);
+  border: 2px solid var(--panel);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--maize);
+  border: 2px solid var(--panel);
+}
+
+input[type="range"]:focus-visible {
+  outline: 2px solid var(--maize);
+  outline-offset: 3px;
+}
+
+.transport-btn {
+  appearance: none;
+  border: 1.5px solid var(--maize);
+  background: transparent;
+  color: var(--panel-ink);
+  border-radius: 999px;
+  padding: 0;
+  width: 1.95rem;
+  height: 1.95rem;
+  font: inherit;
+  font-size: 0.74rem;
+  line-height: 1;
+  cursor: pointer;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.transport-btn:hover {
+  background: var(--maize);
+  color: var(--navy);
+}
+
+/* ------------------------------------------------- episode demo cards */
+
+.demo-card .pager-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------ results table */
+
+.table-wrap {
+  margin: 0.4rem 0 0;
+  overflow-x: auto;
+}
+
+.table-wrap[hidden] {
+  display: none;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.55rem 0.9rem;
+  text-align: right;
+  border-bottom: 1px solid var(--rule);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* which leading columns are labels varies by table, so the renderer marks
+   them rather than the stylesheet guessing a fixed count */
+.results-table th.is-label,
+.results-table td.is-label {
+  text-align: left;
+}
+
+.results-table thead th {
+  background: var(--navy);
+  color: var(--panel-ink);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: none;
+}
+
+.results-table tbody tr.is-ours td {
+  background: rgba(255, 203, 5, 0.16);
+  font-weight: 600;
+}
+
+.results-table tbody tr.is-ours + tr:not(.is-ours) td {
+  border-top: 2px solid var(--maize);
+}
+
+/* ---------------------------------------------------------------- charts */
+
+.chart-block {
+  margin-top: 0.4rem;
+}
+
+.chart-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.9rem;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.legend[hidden],
+.chart[hidden] {
+  display: none;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.85rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 39, 76, 0.35);
+  flex: none;
+}
+
+.chart {
+  width: 100%;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart text {
+  font-family: inherit;
+}
+
+.chart .axis-line {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+}
+
+.chart .grid-line {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.chart .tick-text {
+  font-size: 11px;
+  fill: var(--ink-3);
+}
+
+.chart .group-text {
+  font-size: 12px;
+  fill: var(--ink-2);
+  font-weight: 500;
+}
+
+.chart .value-text {
+  font-size: 10.5px;
+  fill: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The aligned-view group is the control: still plotted, but pushed back so
+   the two shifted views carry the comparison. */
+.chart .is-control {
+  opacity: 0.4;
+}
+
+.chart .control-well {
+  fill: rgba(0, 39, 76, 0.035);
+}
+
+.chart .control-edge {
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.chart .group-text.is-muted {
+  fill: var(--ink-3);
+  font-weight: 400;
+}
+
+
+/* ---------------------------------------------------------------- theater */
+
+.theater {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  color: var(--panel-ink);
+  margin-top: 2.2rem;
+}
+
+.theater-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.6rem;
+}
+
+.bar-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--panel-ink-2);
+}
+
+.theater-bar .transport-btn {
+  margin-left: auto;
+}
+
+.theater-panes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.pane {
+  background: var(--panel-2);
+  border: 1px solid var(--panel-rule);
+  border-radius: var(--radius);
+  padding: 0.55rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-head {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--panel-ink-2);
+  margin-bottom: 0.45rem;
+}
+
+/* both panes show their clip at one height so switching task never
+   resizes the panel */
+.pane-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  background: #000;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pane-stage video {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pane-stage .pip-inset {
+  height: auto;
+  width: 30%;
+}
+
+/* ------------------------------------------------------------- CAD viewer */
+
+/* The chip row is the part list, so it takes the free space in the theater bar
+   and the transport button stays pinned right. */
+.cad-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.cad-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--panel-ink);
+  background: transparent;
+  border: 1.5px solid var(--panel-rule);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cad-chip i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  flex: none;
+}
+
+.cad-chip:hover {
+  border-color: var(--maize);
+  background: rgba(255, 203, 5, 0.12);
+}
+
+.cad-chip.is-active {
+  background: var(--maize);
+  border-color: var(--maize);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.cad-stage {
+  position: relative;
+  height: 460px;
+  background: #012a4f;
+  border: 1px solid var(--panel-rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.cad-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+  touch-action: none;
+}
+
+.cad-stage.is-ready canvas {
+  opacity: 1;
+}
+
+.cad-status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--panel-ink-2);
+}
+
+.cad-status[hidden] {
+  display: none;
+}
+
+/* Sits over the render, so it has to stay out of the pointer path that
+   OrbitControls listens on. */
+.cad-hint {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.6rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--panel-ink-2);
+  pointer-events: none;
+}
+
+.cad-caption {
+  margin: 1.1rem 0 0.2rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--panel-ink-2);
+  min-height: 4.4em;
+}
+
+.cad-caption b {
+  color: var(--panel-ink);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- takeaways */
+
+.takeaways {
+  list-style: none;
+  counter-reset: take;
+  margin: 2.2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.4rem;
+}
+
+.takeaways li {
+  counter-increment: take;
+  border-top: 3px solid var(--navy);
+  padding-top: 0.75rem;
+}
+
+.takeaways h3 {
+  font-size: 0.98rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.takeaways h3::before {
+  content: counter(take) ". ";
+  color: var(--maize);
+  font-weight: 700;
+}
+
+.takeaways p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+/* ------------------------------------------------------- task cards */
+
+/* the three real-world tasks, each labelled with the limit it probes --
+   a numbered list so the order matches the theater's task picker below */
+.task-cards {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.task-cards li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.15rem;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.task-cards li:hover {
+  border-color: var(--ink-3);
+  border-top-color: var(--navy);
+  box-shadow: 0 2px 10px rgba(0, 39, 76, 0.08);
+}
+
+.task-tag {
+  align-self: flex-start;
+  background: var(--maize);
+  color: var(--navy);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+.task-cards h3 {
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 0.45rem;
+}
+
+.task-cards p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* The three evaluation views are an escalation, not three peers, so each card
+   carries a meter showing how far the camera has moved from training. Names
+   match the group labels on the results chart exactly. */
+.view-steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.view-steps li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.view-steps li:hover {
+  border-color: var(--ink-3);
+  box-shadow: 0 2px 10px rgba(0, 39, 76, 0.08);
+}
+
+.view-steps img {
+  display: block;
+  width: 100%;
+  /* the three source renders differ by a couple of pixels in ratio, which is
+     enough to knock the meters out of a common row */
+  aspect-ratio: 800 / 549;
+  object-fit: cover;
+  border-bottom: 1px solid var(--rule-2);
+}
+
+.view-body {
+  padding: 0.8rem 1rem 0.9rem;
+}
+
+/* three segments, filled to match the stage */
+.view-meter {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.55rem;
+}
+
+.view-meter i {
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--rule);
+}
+
+.view-meter i.is-on {
+  background: var(--maize);
+}
+
+.view-steps h4 {
+  counter-increment: step;
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0;
+}
+
+.view-steps h4::before {
+  content: counter(step) ". ";
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------- bibtex */
+
+.bibtex-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.copy-button {
+  appearance: none;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1.5px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 0.32rem 0.95rem;
+  cursor: pointer;
+  flex: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copy-button:hover {
+  background: var(--navy);
+  color: var(--maize);
+}
+
+#citation pre {
+  margin: 0;
+  background: #fafafa;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--maize);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+
+#citation code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink);
+  white-space: pre;
+}
+
+.funding {
+  margin: 1.2rem 0 0;
+  font-size: 0.88rem;
+  color: var(--ink-3);
+}
+
+/* ---------------------------------------------------------------- responsive */
+
+@media (max-width: 900px) {
+  .figure-frame.is-medium img {
+    width: 100%;
+  }
+
+  .theater-panes {
+    grid-template-columns: 1fr;
+  }
+
+  .view-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .cad-stage {
+    height: 380px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 2.2rem 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .paper-title {
+    font-size: 1.95rem;
+  }
+
+  .authors {
+    font-size: 1.05rem;
+  }
+
+  .affiliation,
+  .venue {
+    font-size: 0.92rem;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  .block-title {
+    font-size: 1.15rem;
+    margin-top: 2.8rem;
+  }
+
+  .bibtex-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pane-stage {
+    height: 230px;
+  }
+
+  .cad-stage {
+    height: 300px;
+  }
+
+  .cad-caption {
+    min-height: 0;
+  }
+
+  /* The part list wraps to several rows here, so the label and the transport
+     button line up with the first row instead of floating at mid-height. */
+  #cad .theater-bar {
+    align-items: flex-start;
+  }
+
+  #cad .bar-label {
+    padding-top: 0.45rem;
+  }
+
+  .chart-block {
+  margin-top: 0.4rem;
+}
+
+.chart-bar {
+    justify-content: center;
+  }
+
+  .segmented button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
