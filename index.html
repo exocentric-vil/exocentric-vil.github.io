@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <title>VIL: Zero-Shot Exocentric View-Invariant Imitation Learning</title>
+  <title>VIL: Zero-Shot Exocentric Viewpoint-Robust Imitation Learning</title>
   <meta name="description"
-    content="Project page for Zero-Shot Exocentric View-Invariant Imitation Learning (VIL): Bridging Handheld Gripper and Arbitrary Exocentric Views.">
-  <meta name="keywords" content="Robotics, Imitation Learning, View Invariance, Manipulation, VIL">
+    content="Project page for Zero-Shot Exocentric Viewpoint-Robust Imitation Learning (VIL): Bridging Handheld Gripper and Exocentric Views.">
+  <meta name="keywords" content="Robotics, Imitation Learning, Viewpoint Robustness, Manipulation, VIL">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -23,7 +23,7 @@
   <!-- ============================== HERO ============================== -->
   <header class="hero">
     <div class="container">
-      <h1 class="paper-title">VIL: Zero-Shot Exocentric<br>View-Invariant Imitation Learning</h1>
+      <h1 class="paper-title">VIL: Zero-Shot Exocentric<br>Viewpoint-Robust Imitation Learning</h1>
 
       <p class="authors">
         Boyan Li<sup>1</sup>, Peilin Meng<sup>1</sup>, Chang Liu<sup>1</sup>,
@@ -103,14 +103,14 @@
 
       <div class="prose">
         <p>
-          We propose <b>VIL</b>, a framework pairing a customized handheld gripper with a zero-shot, view-invariant
+          We propose <b>VIL</b>, a framework pairing a customized handheld gripper with a zero-shot, viewpoint-robust
           imitation learning algorithm, bridging the handheld gripper with arbitrary exocentric views. Our approach
           employs adapters for appearance alignment and a hybrid encoder design to extract viewpoint-agnostic
           representations for an ACT-based policy, enabling robust execution across diverse perspectives. We further
           optimize the data collection pipeline and validate the system in both simulation and real-world tasks.
           Experiments show that VIL achieves stable performance under viewpoint shifts, challenging low-horizon
           scenarios, and dynamic perspectives, outperforming SOTA methods and demonstrating a scalable pipeline for
-          manipulator-agnostic, view-invariant policy learning.
+          manipulator-agnostic, viewpoint-robust policy learning.
         </p>
       </div>
     </div>
@@ -243,7 +243,7 @@
   <!-- ============================== METHOD ============================== -->
   <section class="section" id="method">
     <div class="container">
-      <h2 class="section-title">View-Invariant Algorithm</h2>
+      <h2 class="section-title">Viewpoint-Robust Policy</h2>
 
       <figure class="figure-frame">
         <img src="figure/Fig3.png"
@@ -258,7 +258,7 @@
           appearance gap between a demonstration collected by hand and a rollout executed by a robot arm. The aligned
           exocentric view and the egocentric view then pass through a hybrid feature encoder &mdash; each embedded by the
           backbone suited to it &mdash; to yield viewpoint-agnostic representations, which the ACT block turns into
-          view-invariant actions.
+          viewpoint-robust actions.
         </p>
       </div>
 
@@ -449,7 +449,7 @@
           In contrast, VIL remains nearly unchanged, improving from 91.7% to 93.3% on Transfer Cube and decreasing only from 56.7% to 53.3% on Insertion.
           The encoder ablations support the hybrid design. Under novel viewpoints, Swin-T alone achieves 76.7% / 33.3% on Transfer Cube / Insertion,
           compared with 23.3% / 20.0% for ResNet-50 and 1.7% / 5.0% for ViT-S. The full hybrid encoder reaches 93.3% / 53.3%,
-          These results support using ResNet for fine-grained egocentric details and Swin-T for view-invariant exocentric features.
+          These results support using ResNet for fine-grained egocentric details and Swin-T for viewpoint-robust exocentric features.
         </p>
         <p>
           The real-world results carry the same pattern onto handheld-gripper data. On the plug task VIL holds 80%
@@ -470,7 +470,7 @@
         <button class="copy-button" data-copy-target="bibtex" type="button">Copy</button>
       </div>
       <pre><code id="bibtex">@inproceedings{li2026vil,
-  title     = {Zero-Shot Exocentric View-Invariant Imitation Learning (VIL): Bridging Handheld Gripper and Arbitrary Exocentric Views},
+  title     = {Zero-Shot Exocentric Viewpoint-Robust Imitation Learning (VIL): Bridging Handheld Gripper and Exocentric Views},
   author    = {Li, Boyan and Meng, Peilin and Liu, Chang and Chen, YuLin and Zhou, Qi and Bi, Youyi},
   booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
   year      = {2026}
